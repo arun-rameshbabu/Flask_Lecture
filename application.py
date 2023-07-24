@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, request
 app = Flask(__name__)
 
 @app.route('/')
@@ -35,6 +35,14 @@ def hello_user(user):
         return redirect(url_for('hello_admin'))
     else:
         return redirect(url_for('hello_guest', guest=user))
+
+@app.route('/input', methods = ['POST', 'GET'])
+def information():
+    if request.method == 'POST':
+        info = request.form['info']
+        return redirect(url_for('hello_guest', guest=info))
+    else:
+        return redirect(url_for('hello_world'))
 
 if __name__ == '__main__':
     app.run(debug=True)
