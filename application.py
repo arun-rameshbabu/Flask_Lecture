@@ -3,6 +3,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
+    """
+    Function to show example instance
+    :return:
+    """
     return 'Hello World'
 
 @app.route('/variabletest/<name>')
