@@ -7,7 +7,7 @@ def hello_world():
     Function to show example instance
     :return:
     """
-    return render_template('base.html', head_title= 'Example', page_title= 'Welcome', H1_Description = 'Example Title', H1_Content = 'Welcome to this page', H2_Description='', H2_Content='')
+    return render_template('index.html')
 
 @app.route('/variabletest/<name>')
 def print_variable(name):
