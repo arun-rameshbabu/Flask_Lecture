@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hello {{ name }}!</h1>
+<p>
+  {% if marks > 50 %}
+  <h2> You have passed!</h2>
+  {% else %}
+  <h2> You have to do better!</h2>
+  {% endif %}
+</p>
+
+<table border=1>
+  {% for key, value in results.items() %}
+  <tr>
+    <tr>
+  <th>{{ key }}</th>
+  <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>

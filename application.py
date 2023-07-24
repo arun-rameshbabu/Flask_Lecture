@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, request
+from flask import Flask, redirect, url_for, request, render_template
 app = Flask(__name__)
 
 @app.route('/')
@@ -7,7 +7,7 @@ def hello_world():
     Function to show example instance
     :return:
     """
-    return 'Hello World'
+    return render_template('index.html')
 
 @app.route('/variabletest/<name>')
 def print_variable(name):
@@ -43,6 +43,14 @@ def information():
         return redirect(url_for('hello_guest', guest=info))
     else:
         return redirect(url_for('hello_world'))
+
+@app.route('/texample')
+def table_example():
+    username = 'Michael'
+    avg_score = 70
+    marks_dict = {'phy': 50, 'che': 70, 'math': 90}
+    return render_template('texample.html', name = username, marks = avg_score, results = marks_dict)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
