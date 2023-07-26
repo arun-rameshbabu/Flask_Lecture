@@ -40,7 +40,7 @@ def add_beneficiary_auto():
         applicant_tel = form.applicant_tel.data
         applicant_dob = form.applicant_dob.data
         applicant_desc = form.applicant_desc.data
-        df = pd.DataFrame({'name': applicant_name, 'email': applicant_email, 'tel': applicant_tel, 'dob':applicant_dob, 'desc':applicant_desc})
+        df = pd.DataFrame([{'name': applicant_name, 'email': applicant_email, 'tel': applicant_tel, 'dob':applicant_dob, 'desc':applicant_desc}])
         print(df)
         return redirect(url_for('hello_world'))
     else:
