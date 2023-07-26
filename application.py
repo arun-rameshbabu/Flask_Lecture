@@ -1,5 +1,9 @@
 from flask import Flask, redirect, url_for, request, render_template
+from forms import BeneficiaryForm
+import pandas as pd
+
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'asfhdasfhbakwjbkfefr7y57y47rjbfkabzfcbhafbka'
 
 @app.route('/')
 def hello_world():
@@ -22,6 +26,25 @@ def add_beneficiary():
         return "Beneficiary added successfully"
     else:
         return render_template('add_beneficiary_manual.html')
+
+@app.route('/add_beneficiary_auto', methods = ['POST', 'GET'])
+def add_beneficiary_auto():
+    """
+    Function to show example instance
+    :return:
+    """
+    form = BeneficiaryForm()
+    if form.validate_on_submit():
+        applicant_name = form.applicant_name.data
+        applicant_email = form.applicant_email.data
+        applicant_tel = form.applicant_tel.data
+        applicant_dob = form.applicant_dob.data
+        applicant_desc = form.applicant_desc.data
+        df = pd.DataFrame({'name': applicant_name, 'email': applicant_email, 'tel': applicant_tel, 'dob':applicant_dob, 'desc':applicant_desc})
+        print(df)
+        return redirect(url_for('hello_world'))
+    else:
+        return render_template('add_beneficiary_auto.html', form=form)
 
 @app.route('/variabletest/<name>')
 def print_variable(name):

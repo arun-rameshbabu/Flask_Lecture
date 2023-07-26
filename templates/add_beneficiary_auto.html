@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% from "form-macros.html" import render_field %}
+
+{% block page_title %}
+Beneficiary Management
+{% endblock %}
+
+{% block H1_Description %}
+Add a beneficiary
+{% endblock %}
+
+{% block H1_Content %}
+Please fill up the form in the below section to add a beneficiary
+{% endblock %}
+
+{% block H2_Description %}
+Please fill up the following form
+{% endblock %}
+
+{% block H2_Content %}
+<section>
+    <form action="http://localhost:5000/add_beneficiary_auto" enctype="multipart/form-data" method="post">
+<div class="row">
+    <div class="col-md-6">
+        <h3>Applicant's Basic Information</h3>
+        <table>
+            {{ render_field(form.applicant_name, size=20) }}
+            {{ render_field(form.applicant_email, size=20) }}
+            {{ render_field(form.applicant_tel, size=10) }}
+            {{ render_field(form.applicant_dob, class='datepicker') }}
+            {{ render_field(form.applicant_picture) }}
+            {{ render_field(form.applicant_desc, size=200) }}
+        </table>
+    </div>
+    <table>
+        <tr class="submit">
+            <td></td>
+            <td>
+                <button type="submit">Submit</button>
+            </td>
+        </tr>
+    </table>
+    </div>
+    </form>
+    </section>
+{% endblock %}
