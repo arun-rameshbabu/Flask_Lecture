@@ -9,6 +9,20 @@ def hello_world():
     """
     return render_template('index.html')
 
+@app.route('/add_beneficiary', methods = ['POST', 'GET'])
+def add_beneficiary():
+    """
+    Function to show example instance
+    :return:
+    """
+    if request.method == 'POST':
+        fname = request.form['fname']
+        lname = request.form['lname']
+        print(fname, lname)
+        return "Beneficiary added successfully"
+    else:
+        return render_template('add_beneficiary_manual.html')
+
 @app.route('/variabletest/<name>')
 def print_variable(name):
     return 'Hello %s!' % name

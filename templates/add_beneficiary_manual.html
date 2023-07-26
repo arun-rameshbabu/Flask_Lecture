@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+Beneficiary Management
+{% endblock %}
+
+{% block H1_Description %}
+Add a beneficiary
+{% endblock %}
+
+{% block H1_Content %}
+Please fill up the form in the below section to add a beneficiary
+{% endblock %}
+
+{% block H2_Description %}
+Please fill up the following form
+{% endblock %}
+
+{% block H2_Content %}
+  <form action = "http://localhost:5000/add_beneficiary" method = "post">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" value="John"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" value="Doe"><br><br>
+  <input type="submit" value="Submit">
+</form>
+{% endblock %}

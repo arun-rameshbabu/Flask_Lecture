@@ -28,7 +28,7 @@
                     <ul>
                         <li><a href={{ url_for('hello_admin') }}>Admin Portal</a></li>
                         <li><a href="#">Search</a></li>
-                        <li><a href="#">Add Info</a></li>
+                        <li><a href={{ url_for('add_beneficiary') }}>Add Info</a></li>
                     </ul>
                 </nav>
             </header>
@@ -40,11 +40,11 @@
                 <article>
                     <header>
                         <h1>{% block H1_Description %}{% endblock %}</h1>
-                        <p>{% H1_Content %}{% endblock %}</p>
+                        <p>{% block H1_Content %}{% endblock %}</p>
                     </header>
                     <section>
                         <h2>{% block H2_Description %}{% endblock %}</h2>
-                        <p>{% H2_Content %}{% endblock %}</p>
+                        <p>{% block H2_Content %}{% endblock %}</p>
                     </section>
                 </article>
 
