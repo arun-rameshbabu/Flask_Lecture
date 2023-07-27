@@ -1,0 +1,1 @@
+This directory contains all the beneficiary image files.
