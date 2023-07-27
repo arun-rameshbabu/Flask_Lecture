@@ -18,7 +18,7 @@ Please find the details of the benficiary that was requested
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <img src="static/image_dir/{{ beneficiary.pic }}">
+      <img src="{{ url_for('static', filename='image_dir/{}'.format(beneficiary.pic)) }}">
     </div>
       <div class="col-md-8">
         <h4 class="font-weight-bold mb-0">Beneficiary Name: <span class="text-muted font-weight-normal"> {{ beneficiary['name'] }}</span></h4>
