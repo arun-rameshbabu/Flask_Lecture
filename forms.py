@@ -5,7 +5,7 @@ from wtforms.fields.html5 import DateField, EmailField, TelField
 from wtforms.validators import DataRequired, Length
 
 class BeneficiaryForm(FlaskForm):
-    applicant_name = StringField('Applicant_Name:', validators=[DataRequired()])
+    applicant_name = StringField('Applicant Name:', validators=[DataRequired()])
     applicant_email = EmailField('Applicants Email:', validators=[DataRequired()])
     applicant_tel = TelField('Applicants Phone:', validators=[DataRequired(), Length(10)])
     applicant_desc = TextAreaField('Details About the applicant:', validators=[DataRequired()])

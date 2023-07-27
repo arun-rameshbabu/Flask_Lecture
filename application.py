@@ -1,9 +1,13 @@
+import os
 from flask import Flask, redirect, url_for, request, render_template
 from forms import BeneficiaryForm
 import pandas as pd
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'asfhdasfhbakwjbkfefr7y57y47rjbfkabzfcbhafbka'
+app.config['SUBMITTED_DATA'] = os.path.join('static', 'data_dir','')
+app.config['SUBMITTED_IMG'] = os.path.join('static', 'image_dir','')
 
 @app.route('/')
 def hello_world():
@@ -40,11 +44,22 @@ def add_beneficiary_auto():
         applicant_tel = form.applicant_tel.data
         applicant_dob = form.applicant_dob.data
         applicant_desc = form.applicant_desc.data
-        df = pd.DataFrame([{'name': applicant_name, 'email': applicant_email, 'tel': applicant_tel, 'dob':applicant_dob, 'desc':applicant_desc}])
+        pic_filename = applicant_name.lower().replace(" ", "_") + '.' + secure_filename(form.applicant_picture.data.filename).split('.')[-1]
+        form.applicant_picture.data.save(os.path.join(app.config['SUBMITTED_IMG'] + pic_filename))
+        df = pd.DataFrame([{'name': applicant_name, 'email': applicant_email, 'tel': applicant_tel, 'dob':applicant_dob, 'desc':applicant_desc, 'pic': pic_filename}])
+        df.to_csv(os.path.join(app.config['SUBMITTED_DATA'] + applicant_name.lower().replace(" ", "_") + '.csv'))
         print(df)
         return redirect(url_for('hello_world'))
     else:
         return render_template('add_beneficiary_auto.html', form=form)
+
+
+@app.route('/display_data/<name>')
+def render_information(name):
+    df = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] + name.lower().replace(" ", "_") + '.csv'), index_col=False)
+    print (df.iloc[0]['name'])
+    return render_template('view_beneficiary.html', beneficiary=df.iloc[0])
+
 
 @app.route('/variabletest/<name>')
 def print_variable(name):

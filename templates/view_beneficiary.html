@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+Beneficiary Management
+{% endblock %}
+
+{% block H1_Description %}
+{% endblock %}
+
+{% block H1_Content %}
+{% endblock %}
+
+{% block H2_Description %}
+Please find the details of the benficiary that was requested
+{% endblock %}
+
+{% block H2_Content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <img src="static/image_dir/{{ beneficiary.pic }}">
+    </div>
+      <div class="col-md-8">
+        <h4 class="font-weight-bold mb-0">Beneficiary Name: <span class="text-muted font-weight-normal"> {{ beneficiary['name'] }}</span></h4>
+        <h4 class="font-weight-bold mb-0">Beneficiary Email: <span class="text-muted font-weight-normal"> {{ beneficiary.email }}</span></h4>
+        <h4 class="font-weight-bold mb-0">Beneficiary Phone: <span class="text-muted font-weight-normal"> {{ beneficiary.tel }}</span></h4>
+        <h4 class="font-weight-bold mb-0">Beneficiary DOB: <span class="text-muted font-weight-normal"> {{ beneficiary.dob }}</span></h4>
+        <h4 class="font-weight-bold mb-0">Beneficiary Description: <span class="text-muted font-weight-normal"> {{ beneficiary.desc }}</span></h4>
+    </div>
+    </div>
+  </div>
+
+{% endblock %}
